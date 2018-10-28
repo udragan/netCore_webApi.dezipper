@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dezipper.Api", "Dezipper.Api\Dezipper.Api.csproj", "{7A53FDCF-9EC9-4F09-BAC2-F173EDF0EA96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dezipper.Api", "Dezipper.Api\Dezipper.Api.csproj", "{7A53FDCF-9EC9-4F09-BAC2-F173EDF0EA96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dezipper.Domain.Common", "Dezipper.Domain.Common\Dezipper.Domain.Common.csproj", "{94703309-F903-4908-A389-D2AB30CE741F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7A53FDCF-9EC9-4F09-BAC2-F173EDF0EA96}.Debug|x64.Build.0 = Debug|x64
 		{7A53FDCF-9EC9-4F09-BAC2-F173EDF0EA96}.Release|x64.ActiveCfg = Release|x64
 		{7A53FDCF-9EC9-4F09-BAC2-F173EDF0EA96}.Release|x64.Build.0 = Release|x64
+		{94703309-F903-4908-A389-D2AB30CE741F}.Debug|x64.ActiveCfg = Debug|x64
+		{94703309-F903-4908-A389-D2AB30CE741F}.Debug|x64.Build.0 = Debug|x64
+		{94703309-F903-4908-A389-D2AB30CE741F}.Release|x64.ActiveCfg = Release|x64
+		{94703309-F903-4908-A389-D2AB30CE741F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
