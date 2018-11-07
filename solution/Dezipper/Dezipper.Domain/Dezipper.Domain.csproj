@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>com.udragan.netCore.webApi.Dezipper.Domain</RootNamespace>
+    <AssemblyName>netCore.webApi.Dezipper.Domain</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\bin64\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dezipper.Domain.Common\Dezipper.Domain.Common.csproj" />
+  </ItemGroup>
+
+</Project>
