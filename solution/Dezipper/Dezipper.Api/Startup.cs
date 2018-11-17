@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
+using com.udragan.netCore.webApi.Dezipper.Domain.Models;
+using com.udragan.netCore.webApi.Dezipper.Infrastructure.Contexts;
+using com.udragan.netCore.webApi.Dezipper.Infrastructure.Repositories;
+using com.udragan.netCore.webApi.Dezipper.Infrastructure.UnitOfWork;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -18,6 +24,11 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<DezipperContext>(opt => opt.UseInMemoryDatabase(databaseName: "InMemoryDatabase"));
+
+			services.AddScoped<ILocationInfoRepository, LocationInfoRepository>();
+			services.AddScoped<IDezipperUnitOfWork, DezipperUnitOfWork>();
+
 			services.AddMvc();
 
 			services.AddSwaggerGen(x =>
@@ -31,6 +42,13 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 		{
 			if (env.IsDevelopment())
 			{
+				using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+				{
+					DezipperContext context = serviceScope.ServiceProvider.GetRequiredService<DezipperContext>();
+
+					SeedTestData(context);
+				}
+
 				app.UseDeveloperExceptionPage();
 			}
 
@@ -41,6 +59,17 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 			});
 
 			app.UseMvc();
+		}
+
+		private static void SeedTestData(DezipperContext context)
+		{
+			LocationInfo loc1 = new LocationInfo(1000, "Location One");
+			LocationInfo loc2 = new LocationInfo(2000, "Location Two");
+
+			context.LocationInfos.Add(loc1);
+			context.LocationInfos.Add(loc2);
+
+			context.SaveChanges();
 		}
 	}
 }
