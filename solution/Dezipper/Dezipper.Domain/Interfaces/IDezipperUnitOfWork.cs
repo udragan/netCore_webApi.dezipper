@@ -6,7 +6,7 @@ namespace com.udragan.netCore.webApi.Dezipper.Domain.Interfaces
 	/// Dezipper application unit of work interface.
 	/// </summary>
 	/// <seealso cref="com.udragan.netCore.webApi.Dezipper.Domain.Common.Shared.IUnitOfWork" />
-	interface IDezipperUnitOfWork : IUnitOfWork
+	public interface IDezipperUnitOfWork : IUnitOfWork
 	{
 		/// <summary>
 		/// Gets the location infos repository.

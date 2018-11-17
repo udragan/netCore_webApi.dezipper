@@ -29,7 +29,7 @@ namespace com.udragan.netCore.webApi.Dezipper.Domain.Common.Shared
 		TEntity Get(long id);
 
 		/// <summary>
-		/// Finds the specified predicate.
+		/// Finds all entities that satisfy the specified predicate.
 		/// </summary>
 		/// <param name="predicate">The predicate.</param>
 		/// <returns>
@@ -47,7 +47,7 @@ namespace com.udragan.netCore.webApi.Dezipper.Domain.Common.Shared
 		TEntity Add(TEntity entity);
 
 		/// <summary>
-		/// Removes the entity from reporitory.
+		/// Removes the entity from repository.
 		/// </summary>
 		/// <param name="entity">The entity.</param>
 		void Remove(TEntity entity);

@@ -29,4 +29,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Dezipper.Domain\Dezipper.Domain.csproj" />
+    <ProjectReference Include="..\Dezipper.Infrastructure\Dezipper.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

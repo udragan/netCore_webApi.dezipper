@@ -38,5 +38,19 @@ namespace com.udragan.netCore.webApi.Dezipper.Domain.Models
 		public string Name { get; private set; }
 
 		#endregion
+
+		#region Public methods
+
+		/// <summary>
+		/// Updates this <see cref="LocationInfo"/> entity.
+		/// </summary>
+		/// <param name="entity">The entity.</param>
+		public void Update(LocationInfo entity)
+		{
+			ZipCode = entity.ZipCode;
+			Name = entity.Name;
+		}
+
+		#endregion
 	}
 }

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dezipper.Api", "Dezipper.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dezipper.Domain.Common", "Dezipper.Domain.Common\Dezipper.Domain.Common.csproj", "{94703309-F903-4908-A389-D2AB30CE741F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dezipper.Domain", "Dezipper.Domain\Dezipper.Domain.csproj", "{9A915479-2429-469B-A348-CD2F1747E407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dezipper.Domain", "Dezipper.Domain\Dezipper.Domain.csproj", "{9A915479-2429-469B-A348-CD2F1747E407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dezipper.Infrastructure", "Dezipper.Infrastructure\Dezipper.Infrastructure.csproj", "{3F0792F1-8EC5-46BF-BB39-694F8AE90CEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9A915479-2429-469B-A348-CD2F1747E407}.Debug|x64.Build.0 = Debug|x64
 		{9A915479-2429-469B-A348-CD2F1747E407}.Release|x64.ActiveCfg = Release|x64
 		{9A915479-2429-469B-A348-CD2F1747E407}.Release|x64.Build.0 = Release|x64
+		{3F0792F1-8EC5-46BF-BB39-694F8AE90CEC}.Debug|x64.ActiveCfg = Debug|x64
+		{3F0792F1-8EC5-46BF-BB39-694F8AE90CEC}.Debug|x64.Build.0 = Debug|x64
+		{3F0792F1-8EC5-46BF-BB39-694F8AE90CEC}.Release|x64.ActiveCfg = Release|x64
+		{3F0792F1-8EC5-46BF-BB39-694F8AE90CEC}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
