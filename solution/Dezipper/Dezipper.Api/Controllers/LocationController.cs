@@ -8,30 +8,30 @@ namespace Dezipper.Api.Controllers
 {
 	[Produces("application/json")]
 	[Route("api/[controller]")]
-	public class HomeController : Controller
+	public class LocationController : Controller
 	{
 		IDezipperUnitOfWork _unitOfWork;
 
-		public HomeController(IDezipperUnitOfWork unitOfWork)
+		public LocationController(IDezipperUnitOfWork unitOfWork)
 		{
 			_unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
 		}
 
-		// GET: api/Home
+		// GET: api/Location
 		[HttpGet]
 		public IEnumerable<LocationInfo> Get()
 		{
 			return _unitOfWork.LocationInfos.GetAll();
 		}
 
-		// GET: api/Home/5
-		[HttpGet("{id}", Name = "Get")]
+		// GET: api/Location/5
+		[HttpGet("{id}")]
 		public LocationInfo Get(int id)
 		{
 			return _unitOfWork.LocationInfos.Get(id);
 		}
 
-		// POST: api/Home
+		// POST: api/Location
 		[HttpPost]
 		public void Post([FromBody]LocationInfo value)
 		{
@@ -39,7 +39,7 @@ namespace Dezipper.Api.Controllers
 			_unitOfWork.Commit();
 		}
 
-		// PUT: api/Home/5
+		// PUT: api/Location/5
 		[HttpPut("{id}")]
 		public void Put(int id, [FromBody]LocationInfo value)
 		{
@@ -52,7 +52,7 @@ namespace Dezipper.Api.Controllers
 			}
 		}
 
-		// DELETE: api/ApiWithActions/5
+		// DELETE: api/Location/5
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
