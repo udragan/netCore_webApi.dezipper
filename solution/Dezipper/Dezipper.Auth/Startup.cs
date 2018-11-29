@@ -11,7 +11,9 @@ namespace com.udragan.netCore.webApi.Dezipper.Auth
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddIdentityServer()
-				.AddDeveloperSigningCredential();
+				.AddDeveloperSigningCredential()
+				.AddInMemoryApiResources(ServerConfig.GetApiResources())
+				.AddInMemoryClients(ServerConfig.GetClients());
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
