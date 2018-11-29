@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
 using com.udragan.netCore.webApi.Dezipper.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dezipper.Api.Controllers
 {
 	[Produces("application/json")]
 	[Route("api/[controller]")]
+	[Authorize]
 	public class LocationController : Controller
 	{
 		IDezipperUnitOfWork _unitOfWork;

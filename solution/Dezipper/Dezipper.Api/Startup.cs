@@ -29,7 +29,20 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 			services.AddScoped<ILocationInfoRepository, LocationInfoRepository>();
 			services.AddScoped<IDezipperUnitOfWork, DezipperUnitOfWork>();
 
-			services.AddMvc();
+			services.AddMvcCore()
+				.AddApiExplorer()
+				.AddAuthorization()
+				.AddJsonFormatters();
+
+
+			services.AddAuthentication("Bearer")
+			.AddIdentityServerAuthentication(options =>
+			{
+				options.Authority = "http://localhost:2884";
+				options.RequireHttpsMetadata = false;
+
+				options.ApiName = "dezipperApi";
+			});
 
 			services.AddSwaggerGen(x =>
 			{
@@ -58,6 +71,7 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 				c.SwaggerEndpoint("/swagger/v0.1/swagger.json", "DezipperAPI");
 			});
 
+			app.UseAuthentication();
 			app.UseMvc();
 		}
 
