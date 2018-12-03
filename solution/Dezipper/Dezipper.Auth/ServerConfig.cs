@@ -30,6 +30,17 @@ namespace com.udragan.netCore.webApi.Dezipper.Auth
 			{
 				new Client
 				{
+					ClientId = "postman",
+					AllowedGrantTypes = GrantTypes.ClientCredentials,
+					ClientSecrets =
+					{
+						new Secret("postman".Sha256())
+					},
+					AllowedScopes = { "dezipperApi" }
+
+				},
+				new Client
+				{
 					ClientId = "client",
 					AllowedGrantTypes = GrantTypes.ClientCredentials,
 					ClientSecrets =
