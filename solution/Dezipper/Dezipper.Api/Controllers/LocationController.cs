@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
 using com.udragan.netCore.webApi.Dezipper.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Dezipper.Api.Controllers
 {
@@ -13,17 +15,21 @@ namespace Dezipper.Api.Controllers
 	public class LocationController : Controller
 	{
 		IDezipperUnitOfWork _unitOfWork;
+		IConfiguration _config;
 
-		public LocationController(IDezipperUnitOfWork unitOfWork)
+		public LocationController(IDezipperUnitOfWork unitOfWork, IConfiguration config)
 		{
 			_unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+			_config = config;
 		}
 
 		// GET: api/Location
 		[HttpGet]
 		public IEnumerable<LocationInfo> Get()
 		{
-			return _unitOfWork.LocationInfos.GetAll();
+			return _unitOfWork.LocationInfos
+				.GetAll()
+				.Take(int.Parse(_config.GetSection("Api:MaxNumberOfResults").Value));
 		}
 
 		// GET: api/Location/5

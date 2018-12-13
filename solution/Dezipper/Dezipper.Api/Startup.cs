@@ -34,11 +34,10 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 				.AddAuthorization()
 				.AddJsonFormatters();
 
-
 			services.AddAuthentication("Bearer")
 			.AddIdentityServerAuthentication(options =>
 			{
-				options.Authority = "http://localhost:2884";
+				options.Authority = Configuration.GetSection("Auth:IdentityServerAddress").Value;
 				options.RequireHttpsMetadata = false;
 
 				options.ApiName = "dezipperApi";
