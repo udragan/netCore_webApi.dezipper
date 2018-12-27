@@ -10,10 +10,14 @@ namespace com.udragan.netCore.webApi.Dezipper.Auth
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddMvc();
+
 			services.AddIdentityServer()
 				.AddDeveloperSigningCredential()
-				.AddInMemoryApiResources(ServerConfig.GetApiResources())
-				.AddInMemoryClients(ServerConfig.GetClients());
+				.AddInMemoryIdentityResources(ServerConfig.GetIdentityResources())
+				//.AddInMemoryApiResources(ServerConfig.GetApiResources())
+				.AddInMemoryClients(ServerConfig.GetClients())
+				.AddTestUsers(ServerConfig.GetUsers());
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -24,7 +28,10 @@ namespace com.udragan.netCore.webApi.Dezipper.Auth
 				app.UseDeveloperExceptionPage();
 			}
 
+			app.UseStaticFiles();
 			app.UseIdentityServer();
+
+			app.UseMvcWithDefaultRoute();
 		}
 	}
 }

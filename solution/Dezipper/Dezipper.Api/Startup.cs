@@ -1,4 +1,5 @@
-﻿using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
+﻿using System.IdentityModel.Tokens.Jwt;
+using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
 using com.udragan.netCore.webApi.Dezipper.Domain.Models;
 using com.udragan.netCore.webApi.Dezipper.Infrastructure.Contexts;
 using com.udragan.netCore.webApi.Dezipper.Infrastructure.Repositories;
@@ -34,14 +35,24 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 				.AddAuthorization()
 				.AddJsonFormatters();
 
-			services.AddAuthentication("Bearer")
-			.AddIdentityServerAuthentication(options =>
-			{
-				options.Authority = Configuration.GetSection("Auth:IdentityServerAddress").Value;
-				options.RequireHttpsMetadata = false;
+			JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-				options.ApiName = "dezipperApi";
-			});
+			services.AddAuthentication(options =>
+			{
+				options.DefaultScheme = "Cookies";
+				options.DefaultChallengeScheme = "oidc";
+			})
+				.AddCookie("Cookies")
+				.AddOpenIdConnect("oidc", options =>
+				{
+					options.SignInScheme = "Cookies";
+
+					options.Authority = Configuration.GetSection("Auth:IdentityServerAddress").Value;
+					options.RequireHttpsMetadata = false;
+
+					options.ClientId = "dezipper.api";
+					options.SaveTokens = true;
+				});
 
 			services.AddSwaggerGen(x =>
 			{
@@ -71,7 +82,9 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 			});
 
 			app.UseAuthentication();
-			app.UseMvc();
+
+			app.UseStaticFiles();
+			app.UseMvcWithDefaultRoute();
 		}
 
 		private static void SeedTestData(DezipperContext context)
