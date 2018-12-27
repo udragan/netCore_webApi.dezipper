@@ -11,7 +11,6 @@ namespace Dezipper.Api.Controllers
 {
 	[Produces("application/json")]
 	[Route("api/[controller]")]
-	[Authorize]
 	public class LocationController : Controller
 	{
 		IDezipperUnitOfWork _unitOfWork;
@@ -24,6 +23,7 @@ namespace Dezipper.Api.Controllers
 		}
 
 		// GET: api/Location
+		[Authorize]
 		[HttpGet]
 		public IEnumerable<LocationInfo> Get()
 		{
@@ -40,6 +40,7 @@ namespace Dezipper.Api.Controllers
 		}
 
 		// POST: api/Location
+		[Authorize]
 		[HttpPost]
 		public void Post([FromBody]LocationInfo value)
 		{
@@ -48,6 +49,7 @@ namespace Dezipper.Api.Controllers
 		}
 
 		// PUT: api/Location/5
+		[Authorize]
 		[HttpPut("{id}")]
 		public void Put(int id, [FromBody]LocationInfo value)
 		{
@@ -61,6 +63,7 @@ namespace Dezipper.Api.Controllers
 		}
 
 		// DELETE: api/Location/5
+		[Authorize]
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
