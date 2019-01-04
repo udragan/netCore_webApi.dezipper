@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using com.udragan.netCore.webApi.Dezipper.Domain.Interfaces;
 using com.udragan.netCore.webApi.Dezipper.Domain.Models;
 using com.udragan.netCore.webApi.Dezipper.Infrastructure.Contexts;
@@ -89,11 +90,41 @@ namespace com.udragan.netCore.webApi.Dezipper.Api
 
 		private static void SeedTestData(DezipperContext context)
 		{
-			LocationInfo loc1 = new LocationInfo(1000, "Location One");
-			LocationInfo loc2 = new LocationInfo(2000, "Location Two");
+			IList<LocationInfo> testLocations = new List<LocationInfo>();
 
-			context.LocationInfos.Add(loc1);
-			context.LocationInfos.Add(loc2);
+			testLocations.Add(new LocationInfo(90000,
+				"Los Angeles",
+				"California",
+				"CA",
+				latitude: 34.052235,
+				longitude: -118.243683));
+			testLocations.Add(new LocationInfo(77000,
+				"Austin",
+				"Texas",
+				"TX",
+				latitude: 30.274613,
+				longitude: -97.740353));
+			testLocations.Add(new LocationInfo(58000,
+				"Phoenix",
+				"Arizona",
+				"AZ",
+				latitude: 33.739650,
+				longitude: -112.054554));
+
+			testLocations.Add(new LocationInfo(60000,
+				"Chicago",
+				"Illinois",
+				"IL",
+				latitude: 41.875430,
+				longitude: -87.619033));
+			testLocations.Add(new LocationInfo(30000,
+				"Atlanta",
+				"Georgia",
+				"GA",
+				latitude: 33.761086,
+				longitude: -84.388335));
+
+			context.LocationInfos.AddRange(testLocations);
 
 			context.SaveChanges();
 		}
