@@ -11,8 +11,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  solution: '**/*.sln'
 
 steps:
-- script: dotnet restore
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
